@@ -246,7 +246,7 @@ ResultSet rs;
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(2);
         jTextArea1.setTabSize(5);
-        jTextArea1.setText("*this is a compulsory field .Batch Updation will happen on the basis of ID.");
+        jTextArea1.setText("*This is a compulsory field .Batch Updation will happen on the basis of ID.");
         jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane2.setViewportView(jTextArea1);
 

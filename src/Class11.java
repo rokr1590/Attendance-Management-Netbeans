@@ -321,7 +321,7 @@ c2.requestFocus();
             int y=d.getYear()+1900;
             int daycount;
             int mon=d.getMonth()+1;
-
+            int date=d.getDate();
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/11std"+y, "root", "1234");
             stmt=con.createStatement();
@@ -414,8 +414,8 @@ c2.requestFocus();
                 System.out.println(countoffinal0);
                 int total=daycount-countoffinal;
 
-                JOptionPane.showMessageDialog(null,"Name :"+Name1+". Your attendance is "+countoffinal1+"/"+total+" in the month of October and you were absent for = "+countoffinal0+" days");
-                String details="Name :"+Name1+" Your attendance is "+countoffinal1+"/"+total+" in the month of "+month+" and you were absent for = "+countoffinal0+" days";
+                JOptionPane.showMessageDialog(null,"Name :"+Name1+". Your attendance is "+countoffinal1+"/"+total+" in the month of October and you were absent for = "+countoffinal0+"days till the date"+date+" "+month);
+                String details="Name :"+Name1+" Your attendance is "+countoffinal1+"/"+total+" in the month of "+month+" and you were absent for = "+countoffinal0+"days till the date"+date+" "+month;
                 ByteArrayOutputStream out= QRCode.from(details).to(ImageType.PNG).stream();
                 File f= new File("C:\\Users\\Asus\\Desktop\\Attendance\\11std2019\\"+Name1+".jpeg");
                     FileOutputStream fos =new FileOutputStream(f);

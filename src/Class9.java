@@ -293,7 +293,7 @@ ResultSet rs;
         try{Date d=new Date();
 
             String a;
-
+            int date=d.getDate();
             int y=d.getYear()+1900;
             int daycount;
             int mon=d.getMonth()+1;
@@ -377,8 +377,8 @@ ResultSet rs;
                 System.out.println(countoffinal0);
                 int total=daycount-countoffinal;
 
-                JOptionPane.showMessageDialog(null,"Name :"+Name1+". Your attendance is "+countoffinal1+"/"+total+" in the month of October and you were absent for = "+countoffinal0+" days");
-                String details="Name :"+Name1+" Your attendance is "+countoffinal1+"/"+total+" in the month of "+month+" and you were absent for = "+countoffinal0+" days";
+                JOptionPane.showMessageDialog(null,"Name :"+Name1+". Your attendance is "+countoffinal1+"/"+total+" in the month of October and you were absent for = "+countoffinal0+"days till the date"+date+" "+month);
+                String details="Name :"+Name1+" Your attendance is "+countoffinal1+"/"+total+" in the month of "+month+" and you were absent for = "+countoffinal0+"days till the date"+date+" "+month;
                 ByteArrayOutputStream out= QRCode.from(details).to(ImageType.PNG).stream();
                 File f= new File("C:\\Users\\Asus\\Desktop\\Attendance\\9Std"+y+"\\"+Name1+".jpeg");
                 FileOutputStream fos =new FileOutputStream(f);
