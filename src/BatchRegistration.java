@@ -531,6 +531,13 @@ ps = MyConnection.getConnection().prepareStatement(sql);
                 tm.addRow(new Object[]{""+id1,code1,""+year,teach1,class2,stream1,section});
                 
             }
+             btchstream.setText("");
+             btchid.setText("");
+             btchclass.setText("");
+             btchsec.setText("");
+             btchyear.setText("");
+             btchcode.setText("");
+             btchteach.setText("");
                 
             }
 }
