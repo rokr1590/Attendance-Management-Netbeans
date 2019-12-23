@@ -285,7 +285,7 @@ public class Mark10th extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 102, 255));
-        jLabel7.setText("SORT BY NAME");
+        jLabel7.setText("SORT BY SECTION");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
