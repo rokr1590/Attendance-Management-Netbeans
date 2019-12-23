@@ -85,6 +85,7 @@ public class BatchRegistration extends javax.swing.JFrame {
         jLabel2.setText("BATCH CODE");
 
         btchcode.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btchcode.setNextFocusableComponent(btchyear);
         btchcode.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btchcodeFocusLost(evt);
@@ -200,6 +201,7 @@ public class BatchRegistration extends javax.swing.JFrame {
 
         Register.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Register.setText("REGISTARTIONS");
+        Register.setNextFocusableComponent(btchid);
         Register.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegisterActionPerformed(evt);
@@ -219,6 +221,7 @@ public class BatchRegistration extends javax.swing.JFrame {
         jLabel7.setText("TEACHER");
 
         btchteach.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btchteach.setNextFocusableComponent(Register);
         btchteach.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btchteachFocusLost(evt);
@@ -251,6 +254,7 @@ public class BatchRegistration extends javax.swing.JFrame {
         jLabel9.setText("ID");
 
         btchid.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btchid.setNextFocusableComponent(btchcode);
         btchid.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 btchidFocusLost(evt);
@@ -456,98 +460,95 @@ this.dispose();
     }//GEN-LAST:event_b5ActionPerformed
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-String class1=btchclass.getText();
-String code=btchcode.getText();
-int id=Integer.parseInt(btchid.getText());
-String id5="" +id;
-String stream=btchstream.getText();
-String sec=btchsec.getText();
-String tech=btchteach.getText();
-int a=Integer.parseInt(btchyear.getText());
-String year5=""+a;
-if(btchstream.equals(""))
-        {
-            stream="NULL"; 
-        }
-else if(class1.equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Enter Class");
-        }
-else if(stream.equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Enter Stream");
-        }
-else if(sec.equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Enter Section");
-        }
- else if(tech.equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Enter Teacher name");
-        }
- else if(code.equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Enter Batch code");
-        }
- else if(year5.equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Enter Year");
-        }
- else if(id5.equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Enter Id");
-        }
- else if(checkSection(class1).equals(sec))
- {
-     JOptionPane.showMessageDialog(null,"This Section Already exists for this class");
- }
- else{
-try{
-    Class.forName("java.sql.Driver");
-Connection con=DriverManager.getConnection("jdbc:mysql://localhost/jatin","root","1234");
-Statement stmt=con.createStatement();
-String sql="INSERT INTO batchrgstr(batchcode,batchyear,teacher,Class,Stream,Section,ID) VALUES ('"+code+"',"+a+",'"+tech+"','"+class1+"','"+stream+"','"+sec+"',"+id+");";
-PreparedStatement ps;
-ps = MyConnection.getConnection().prepareStatement(sql);                      
-            int c=ps.executeUpdate(sql);
-               System.out.println(sql);
-            if(c > 0)
+     
+            String class1 = btchclass.getText();
+            String code = btchcode.getText();
+            int id = Integer.parseInt(btchid.getText());
+            String id5 = "" + id;
+            String stream = btchstream.getText();
+            String sec = btchsec.getText();
+            String tech = btchteach.getText();
+            int a = Integer.parseInt(btchyear.getText());
+            String year5 = "" + a;
+            if (btchstream.equals("")) {
+                stream = "NULL";
+            }
+            else if (class1.equals(""))
             {
-             JOptionPane.showMessageDialog(null,"Batch Addded");
-             DefaultTableModel tm=(DefaultTableModel)tb1.getModel();
-             tm.setRowCount(0);
-             Statement st=con.createStatement();
-             String sql1="Select * from batchrgstr;";
-             System.out.println(sql1);
-             ResultSet rs=st.executeQuery(sql1);
-             while(rs.next())
-             {  String code1=rs.getString("batchcode");
-                int year=rs.getInt("batchyear");
-                String teach1=rs.getString("teacher");
-                String class2=rs.getString("Class");
-                String stream1=rs.getString("Stream");
-                String section=rs.getString("Section");
-                int id1=rs.getInt("ID");
-                tm.addRow(new Object[]{""+id1,code1,""+year,teach1,class2,stream1,section});
-                
+                JOptionPane.showMessageDialog(null, "Enter Class");
             }
-             btchstream.setText("");
-             btchid.setText("");
-             btchclass.setText("");
-             btchsec.setText("");
-             btchyear.setText("");
-             btchcode.setText("");
-             btchteach.setText("");
-                
+            else if (stream.equals("")) 
+            {
+                JOptionPane.showMessageDialog(null, "Enter Stream");
             }
-}
- 
-catch(Exception e)
-{
-    JOptionPane.showMessageDialog(null,e.getMessage());
-}
- } 
+            else if (sec.equals("")) 
+            {
+                JOptionPane.showMessageDialog(null, "Enter Section");
+            }
+            
+            else if (tech.equals("")) 
+            {
+                JOptionPane.showMessageDialog(null, "Enter Teacher name");
+            }
+            else if (code.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Enter Batch code");
+            }
+            else if (year5.equals("")) 
+            {
+                JOptionPane.showMessageDialog(null, "Enter Year");
+            }
+            else if (id5.equals("")) 
+            {
+                JOptionPane.showMessageDialog(null, "Enter Id");
+            }
+            if (checkSection(class1,sec).equals(sec)) 
+            {System.out.println("HELLO");
+                JOptionPane.showMessageDialog(null, "This Section Already exists for this class");
+            }
+            else {
+                try {
+                    Class.forName("java.sql.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost/jatin", "root", "1234");
+                    Statement stmt = con.createStatement();
+                    String sql = "INSERT INTO batchrgstr(batchcode,batchyear,teacher,Class,Stream,Section,ID) VALUES ('" + code + "'," + a + ",'" + tech + "','" + class1 + "','" + stream + "','" + sec + "'," + id + ");";
+                    PreparedStatement ps;
+                    ps = MyConnection.getConnection().prepareStatement(sql);
+                    int c = ps.executeUpdate(sql);
+                    System.out.println(sql);
+                    if (c > 0) {
+                        JOptionPane.showMessageDialog(null, "Batch Addded");
+                        DefaultTableModel tm = (DefaultTableModel) tb1.getModel();
+                        tm.setRowCount(0);
+                        Statement st = con.createStatement();
+                        String sql1 = "Select * from batchrgstr;";
+                        System.out.println(sql1);
+                        ResultSet rs = st.executeQuery(sql1);
+                        while (rs.next()) {
+                            String code1 = rs.getString("batchcode");
+                            int year = rs.getInt("batchyear");
+                            String teach1 = rs.getString("teacher");
+                            String class2 = rs.getString("Class");
+                            String stream1 = rs.getString("Stream");
+                            String section = rs.getString("Section");
+                            int id1 = rs.getInt("ID");
+                            tm.addRow(new Object[]{"" + id1, code1, "" + year, teach1, class2, stream1, section});
 
+                        }
+                        btchstream.setText("");
+                        btchid.setText("");
+                        btchclass.setText("");
+                        btchsec.setText("");
+                        btchyear.setText("");
+                        btchcode.setText("");
+                        btchteach.setText("");
+
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
+            }
+       
     }//GEN-LAST:event_RegisterActionPerformed
 
     private void btchteachFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btchteachFocusLost
@@ -577,16 +578,17 @@ catch(Exception e)
     private void btchidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btchidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btchidActionPerformed
-public String checkSection(String class1)
+public String checkSection(String class1,String section1)
 { 
  PreparedStatement ps;
  ResultSet rs;
  boolean checkSec = false;
- String sf = null;
- String query = "SELECT Section  FROM `batchrgstr` WHERE `Class` =?";	
+ String sf = "";
+ String query = "SELECT Section  FROM `batchrgstr` WHERE `Class` =? and section=?";	
  try {
             ps = MyConnection.getConnection().prepareStatement(query);
             ps.setString(1, class1);
+            ps.setString(2 ,section1);
             
             rs = ps.executeQuery();
            
@@ -595,6 +597,7 @@ public String checkSection(String class1)
             {
                
                 sf=rs.getString(1);
+                
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
