@@ -624,6 +624,7 @@ private void filter1(String l)
                 ResultSet rs=st.executeQuery(quer);
                 ResultSetMetaData rsmd = rs.getMetaData();
                 int ncol=0;
+                
                 ncol=rsmd.getColumnCount();
                 if(ncol>=3){
                     for(int row=0;row<rows;row++){

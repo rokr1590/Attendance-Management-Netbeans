@@ -442,8 +442,9 @@ int qw = 0;
     String sql5 = "INSERT INTO studentrgstr VALUES("+roll+",'"+fullname+"',"+ID+",'"+Batchcode+"','"+sec+"',"+class1+");";
     stmt.executeUpdate(sql5);
     }
-    JOptionPane.showMessageDialog(null,"Students Added!!!");
+    
         }
+        JOptionPane.showMessageDialog(null,"Students Added!!!");
 }
 catch(Exception e)
 {

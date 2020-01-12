@@ -44,9 +44,9 @@ ResultSet rs;
         tb1 = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
         b6 = new javax.swing.JButton();
-        w = new javax.swing.JTextField();
+        class1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        l = new javax.swing.JTextField();
+        sec1 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         btchcode = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -139,16 +139,16 @@ ResultSet rs;
             }
         });
 
-        w.setEditable(false);
-        w.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        w.addFocusListener(new java.awt.event.FocusAdapter() {
+        class1.setEditable(false);
+        class1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        class1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                wFocusLost(evt);
+                class1FocusLost(evt);
             }
         });
-        w.addKeyListener(new java.awt.event.KeyAdapter() {
+        class1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                wKeyPressed(evt);
+                class1KeyPressed(evt);
             }
         });
 
@@ -156,16 +156,16 @@ ResultSet rs;
         jLabel14.setForeground(new java.awt.Color(51, 102, 255));
         jLabel14.setText("SECTION");
 
-        l.setEditable(false);
-        l.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        l.addFocusListener(new java.awt.event.FocusAdapter() {
+        sec1.setEditable(false);
+        sec1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        sec1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                lFocusLost(evt);
+                sec1FocusLost(evt);
             }
         });
-        l.addKeyListener(new java.awt.event.KeyAdapter() {
+        sec1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                lKeyPressed(evt);
+                sec1KeyPressed(evt);
             }
         });
 
@@ -288,8 +288,8 @@ ResultSet rs;
                                         .addGap(43, 43, 43)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(btchcode, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(l, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(w, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(sec1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(class1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(45, 45, 45)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -333,11 +333,11 @@ ResultSet rs;
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(l, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(sec1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(w, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(class1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -377,7 +377,7 @@ while(rs.next())
  String s=rs.getString(1);
  btchcode.setText(s);
 }
-String sql2="Select * from studentrgstr;";
+String sql2="Select * from studentrgstr ;";
             System.out.println(sql2);
             DefaultTableModel tm=(DefaultTableModel)tb1.getModel();
             tm.setRowCount(0);
@@ -417,8 +417,8 @@ catch(Exception e)
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/jatin", "root", "1234");
             stmt=con.createStatement();                   
-            String a1=l.getText();
-            int r=Integer.parseInt(w.getText());
+            String a1=sec1.getText();
+            int r=Integer.parseInt(class1.getText());
             String sql6="Select Rollno from studentrgstr where Section='"+a1+"' and Class="+r+";";
             rs=stmt.executeQuery(sql6);
             while(rs.next())
@@ -431,10 +431,11 @@ catch(Exception e)
         {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
+        System.out.println("yo");
         int op=Integer.parseInt(rollno.getText());
         if(i==op)
         {
-            JOptionPane.showMessageDialog(null,"Roll no "+op+" already exists for Section "+l.getText()+" and Class "+w.getText());
+            JOptionPane.showMessageDialog(null,"Roll no "+op+" already exists for Section "+sec1.getText()+" and Class "+class1.getText());
         }
         else if(sname.getText().isEmpty())
         {
@@ -444,6 +445,7 @@ catch(Exception e)
         {
             JOptionPane.showMessageDialog(null,"Please enter rollno");
         }
+        
         else{  String a=c1.getSelectedItem().toString();
             try{
                 String rol=rollno.getText();
@@ -497,21 +499,21 @@ catch(Exception e)
         // TODO add your handling code here:
     }//GEN-LAST:event_b6ActionPerformed
 
-    private void wFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_wFocusLost
+    private void class1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_class1FocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_wFocusLost
+    }//GEN-LAST:event_class1FocusLost
 
-    private void wKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_wKeyPressed
+    private void class1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_class1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_wKeyPressed
+    }//GEN-LAST:event_class1KeyPressed
 
-    private void lFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lFocusLost
+    private void sec1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sec1FocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_lFocusLost
+    }//GEN-LAST:event_sec1FocusLost
 
-    private void lKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lKeyPressed
+    private void sec1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sec1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lKeyPressed
+    }//GEN-LAST:event_sec1KeyPressed
 
     private void btchcodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btchcodeFocusLost
         // TODO add your handling code here:
@@ -553,10 +555,13 @@ catch(Exception e)
                 btchcode.setText(s);
                 String sec2=rs.getString(6);
                 int dl=rs.getInt(4);
-                l.setText(sec2);
-                w.setText(""+dl);
+                sec1.setText(sec2);
+                class1.setText(""+dl);
 
             }
+            String classs=class1.getText();
+            String secc=sec1.getText();
+            String sql2="Select * from studentrgstr where Class="+classs+" and Section='"+secc+"';";
 
         }
 
@@ -584,8 +589,8 @@ up.setVisible(true);
             while(rs.next()){
                 String sec2=rs.getString(1);
                 int dl=rs.getInt(2);
-                l.setText(sec2);
-                w.setText(""+dl);
+                sec1.setText(sec2);
+                class1.setText(""+dl);
             }
             
        }
@@ -696,6 +701,7 @@ public boolean checkRollno(String class1,String Section)
     private javax.swing.JButton b6;
     private javax.swing.JTextField btchcode;
     private javax.swing.JComboBox<String> c1;
+    private javax.swing.JTextField class1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -710,10 +716,9 @@ public boolean checkRollno(String class1,String Section)
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField l;
     private javax.swing.JTextField rollno;
+    private javax.swing.JTextField sec1;
     private javax.swing.JTextField sname;
     private javax.swing.JTable tb1;
-    private javax.swing.JTextField w;
     // End of variables declaration//GEN-END:variables
 }
