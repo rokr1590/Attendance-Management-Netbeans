@@ -419,13 +419,14 @@ catch(Exception e)
             stmt=con.createStatement();                   
             String a1=sec1.getText();
             int r=Integer.parseInt(class1.getText());
-            String sql6="Select Rollno from studentrgstr where Section='"+a1+"' and Class="+r+";";
+            int roll=Integer.parseInt(rollno.getText());
+            String sql6="Select Rollno from studentrgstr where Section='"+a1+"' and Class="+r+" and rollno="+roll+";";
             rs=stmt.executeQuery(sql6);
             while(rs.next())
             {
                 i=rs.getInt(1);
             }
-
+            System.out.println(i+" Roll no");
         }
         catch(Exception e)
         {
@@ -433,66 +434,56 @@ catch(Exception e)
         }
         System.out.println("yo");
         int op=Integer.parseInt(rollno.getText());
-        if(i==op)
-        {
-            JOptionPane.showMessageDialog(null,"Roll no "+op+" already exists for Section "+sec1.getText()+" and Class "+class1.getText());
-        }
-        else if(sname.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Please enter student name");
-        }
-        else if(rollno.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Please enter rollno");
-        }
-        
-        else{  String a=c1.getSelectedItem().toString();
-            try{
-                String rol=rollno.getText();
-                String sname1=sname.getText();
-                String batchcode1=btchcode.getText();
-                int b=Integer.parseInt(c1.getSelectedItem().toString());
-                DefaultTableModel tm=(DefaultTableModel)tb1.getModel();
+         if (sname.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter student name");
+        } else if (rollno.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter rollno");
+        } else if (i == op) {
+            JOptionPane.showMessageDialog(null, "Roll no " + op + " already exists for Section " + sec1.getText() + " and Class " + class1.getText());
+        } else {
+            String a = c1.getSelectedItem().toString();
+            try {
+                String rol = rollno.getText();
+                String sname1 = sname.getText();
+                String batchcode1 = btchcode.getText();
+                int b = Integer.parseInt(c1.getSelectedItem().toString());
+                DefaultTableModel tm = (DefaultTableModel) tb1.getModel();
                 Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://localhost/jatin", "root", "1234");
-                stmt=con.createStatement();
-                String sql4="Select Section,Class from batchrgstr where ID="+b+";";
-                rs=stmt.executeQuery(sql4);
+                stmt = con.createStatement();
+                String sql4 = "Select Section,Class from batchrgstr where ID=" + b + ";";
+                rs = stmt.executeQuery(sql4);
                 rs.next();
-                String sec=rs.getString(1);
-                int d=rs.getInt(2);
-                String classs=""+d;
+                String sec = rs.getString(1);
+                int d = rs.getInt(2);
+                String classs = "" + d;
 
-                String sql="INSERT INTO studentrgstr(Rollno,StudentName,ID,batchcode,Section,Class) VALUES('"+rol+"','"+sname1+"',"+a+",'"+batchcode1+"','"+sec+"',"+d+");";
+                String sql = "INSERT INTO studentrgstr(Rollno,StudentName,ID,batchcode,Section,Class) VALUES('" + rol + "','" + sname1 + "'," + a + ",'" + batchcode1 + "','" + sec + "'," + d + ");";
                 System.out.println(sql);
                 PreparedStatement ps;
                 ps = MyConnection.getConnection().prepareStatement(sql);
-                int c=ps.executeUpdate(sql);
+                int c = ps.executeUpdate(sql);
                 System.out.println(a);
-                if(c > 0)
-                {
-                    JOptionPane.showMessageDialog(null,"Student Added");
-                    DefaultTableModel tm1=(DefaultTableModel)tb1.getModel();
+                if (c > 0) {
+                    JOptionPane.showMessageDialog(null, "Student Added");
+                    DefaultTableModel tm1 = (DefaultTableModel) tb1.getModel();
                     tm.setRowCount(0);
                     Class.forName("java.sql.Driver");
-                    Connection con1=DriverManager.getConnection("jdbc:mysql://localhost/jatin","root","1234");
-                    Statement st=con.createStatement();
-                    String sql1="Select * from studentrgstr;";
+                    Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost/jatin", "root", "1234");
+                    Statement st = con.createStatement();
+                    String sql1 = "Select * from studentrgstr;";
                     System.out.println(sql1);
-                    ResultSet rs=st.executeQuery(sql1);
-                    while(rs.next())
-                    {
-                        int rolln=rs.getInt(1);
-                        String sname2=rs.getString(2);
-                        int id2=rs.getInt(3);
-                        String batchcode4=rs.getString(4);
-                        tm.addRow(new Object[]{""+id2,batchcode4,""+rolln,sname2});
+                    ResultSet rs = st.executeQuery(sql1);
+                    while (rs.next()) {
+                        int rolln = rs.getInt(1);
+                        String sname2 = rs.getString(2);
+                        int id2 = rs.getInt(3);
+                        String batchcode4 = rs.getString(4);
+                        tm.addRow(new Object[]{"" + id2, batchcode4, "" + rolln, sname2});
 
                     }
                 }
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
         }

@@ -219,7 +219,7 @@ String d=""+a;
                  OTPtxtfield.setVisible(true);
                  VERIFY.setVisible(true);
         try {                
-            String apiKey = "apikey=" + "H0skm1JlUFo-qIewva5P6wndniDewPZPLeMOVyRLPW";
+            String apiKey = "apikey=" + "pLs8jgjauyQ-ZXNLvL9W72tCst54hvanivqi5G8eqc";//"H0skm1JlUFo-qIewva5P6wndniDewPZPLeMOVyRLPW";
             String message = "&message="+ "Your One Time Password is"+d;
             String sender = "&sender=" + sendertxtfield.getText();
             String numbers = "&numbers=" + Mobileno.getText();
