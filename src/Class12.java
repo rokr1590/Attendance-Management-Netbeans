@@ -356,6 +356,7 @@ Statement stmt;
 
                 JOptionPane.showMessageDialog(null,"Name :"+Name1+". Your attendance is "+countoffinal1+"/"+total+" in the month of "+month+" and you were absent for = "+countoffinal0+" days till the date"+date+" "+month);
                 String details="Name :"+Name1+" Your attendance is "+countoffinal1+"/"+total+" in the month of "+month+" and you were absent for = "+countoffinal0+" days till the date"+date+" "+month;
+                String details2="";
                 ByteArrayOutputStream out= QRCode.from(details).to(ImageType.PNG).stream();
                 File f= new File("C:\\Users\\Asus\\Desktop\\Attendance\\12std2019\\"+Name1+".jpeg");
                 FileOutputStream fos =new FileOutputStream(f);

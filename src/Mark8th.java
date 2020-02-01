@@ -392,6 +392,7 @@ private void filter1(String l)
     private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
 
           try{
+              
             Date d=new Date();
             int y=d.getYear()+1900;
             int mon=d.getMonth()+1;
@@ -477,6 +478,31 @@ private void filter1(String l)
                         else if(ncol>3){
                             DefaultTableModel tm1=(DefaultTableModel)tb1.getModel();
                             int rows1=tb1.getRowCount();
+                            String sqlrows="Select count(rollno) from "+mon+"m;";
+                            rs=stmt.executeQuery(sqlrows);
+                            rs.next();
+                            int sqlrowsno=rs.getInt(1);
+                            System.out.println("no of rows of sql table "+sqlrowsno);
+                            System.out.println("no of rows of jtable "+rows1);
+                            int difference=rows-sqlrowsno;
+                            System.out.println(difference+" difference of rows in sql and table");
+                            if(difference>0)
+                            {System.out.println("h");
+                                for(int row=sqlrowsno;row<rows1;row++)
+                                {String id=(String) tb1.getValueAt(row,0);
+                                String roll =(String) tb1.getValueAt(row, 1);
+                                String sname=(String) tb1.getValueAt(row, 2);
+                                String sec=(String) tm.getValueAt(row, 3);
+                                boolean pre=(boolean) tm.getValueAt(row, 4);
+                                int c;
+                                if(pre==true)
+                                c=1;
+                                else
+                                c=0;
+                                    String addnewnametotable="INSERT INTO "+mon+"m(Rollno,StudentName,Section) VALUES("+roll+",'"+sname+"','"+sec+"');";
+                                    stmt.executeUpdate(addnewnametotable);
+                                }
+                            }
                             for(int row=0;row<rows1;row++){
                                 String id=(String) tb1.getValueAt(row,0);
                                 String roll =(String) tb1.getValueAt(row, 1);
