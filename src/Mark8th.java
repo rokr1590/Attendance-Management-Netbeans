@@ -651,7 +651,8 @@ private void filter1(String l)
                     }
                     JOptionPane.showMessageDialog(null,"Attendance Marked");
                 }
-                 if(ncol>3){
+                if(ncol>3)
+                {
                     DefaultTableModel tm1=(DefaultTableModel)tb1.getModel();
                     int rows1=tb1.getRowCount();
                     for(int row=0;row<rows1;row++){

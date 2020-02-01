@@ -323,24 +323,29 @@ ResultSet rs;
                     countoffinal=countof+countoffinal;
                 }
                 System.out.println(countoffinal);
-                for(int i=3;i<=daycount;i++)
+                for(int i=1;i<=daycount;i++)
                 {
                     String sql="Select count(*) from "+m+"M where StudentName='"+Name1+"' and "+i+"d=1;";
                     rs=stmt.executeQuery(sql);
+                    System.out.println(sql);
                     while(rs.next())
                     countof1=rs.getInt(1);
                     countoffinal1=countof1+countoffinal1;
+                    
                 }
                 System.out.println(countoffinal1);
-                for(int i=3;i<=daycount;i++)
+                for(int i=1;i<=daycount;i++)
                 {
                     String sql="Select count(*) from "+m+"M where StudentName='"+Name1+"' and "+i+"d=0;";
                     rs=stmt.executeQuery(sql);
+                    System.out.println(sql);
                     while(rs.next())
                     countof0=rs.getInt(1);
                     countoffinal0=countof0+countoffinal0;
                 }
                 System.out.println(countoffinal0);
+                System.out.println(countoffinal1);
+                System.out.println(countoffinal1);
                 int total=daycount-countoffinal;
 
                 JOptionPane.showMessageDialog(null,"Name :"+Name1+". Your attendance is "+countoffinal1+"/"+total+" in the month of "+month+" and you were absent for = "+countoffinal0+"days till the date"+date+" "+month);

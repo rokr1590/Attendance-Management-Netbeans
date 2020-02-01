@@ -15,10 +15,11 @@ import javax.swing.JOptionPane;
  * @author JATIN
  */
 public class UpdateStudent extends javax.swing.JFrame {
+
     Connection con;
     Statement stmt;
     ResultSet rs;
-    
+
     /**
      * Creates new form UpdateStudent
      */
@@ -57,6 +58,7 @@ public class UpdateStudent extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         sname = new javax.swing.JTextField();
         Delete = new javax.swing.JButton();
+        DELETEALLSTUDENTS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -252,27 +254,19 @@ public class UpdateStudent extends javax.swing.JFrame {
             }
         });
 
+        DELETEALLSTUDENTS.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        DELETEALLSTUDENTS.setText("DELETE ALL STUDENTS");
+        DELETEALLSTUDENTS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DELETEALLSTUDENTSActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(125, 125, 125)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btchcode, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                    .addComponent(sname)
-                    .addComponent(rollno)
-                    .addComponent(class1)
-                    .addComponent(sec))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -297,6 +291,27 @@ public class UpdateStudent extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(125, 125, 125)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btchcode, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                            .addComponent(sname)
+                            .addComponent(rollno)
+                            .addComponent(class1)
+                            .addComponent(sec)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(297, 297, 297)
+                        .addComponent(DELETEALLSTUDENTS, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,12 +339,14 @@ public class UpdateStudent extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sec, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(DELETEALLSTUDENTS, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DataSrch, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Update, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nxt, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(prvs, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,135 +362,121 @@ public class UpdateStudent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void frstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_frstActionPerformed
- try{
+        try {
 
             rs.first();
- int id=rs.getInt("ID");
-        String code=rs.getString("batchcode");
-      String name=rs.getString("StudentName");
-      int rol=rs.getInt("ROllno");
-      String sec1=rs.getString("Section");
-      int f=rs.getInt("Class");
-      btchcode.setText(code);
-      class1.setText(name);
-      rollno.setText(""+rol);
-      sec.setText(sec1);
-      sname.setText(name);
-      class1.setText(""+f);
-            
+            int id = rs.getInt("ID");
+            String code = rs.getString("batchcode");
+            String name = rs.getString("StudentName");
+            int rol = rs.getInt("ROllno");
+            String sec1 = rs.getString("Section");
+            int f = rs.getInt("Class");
+            btchcode.setText(code);
+            class1.setText(name);
+            rollno.setText("" + rol);
+            sec.setText(sec1);
+            sname.setText(name);
+            class1.setText("" + f);
 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }         
         // TODO add your handling code here:
     }//GEN-LAST:event_frstActionPerformed
 
     private void prvsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prvsActionPerformed
- try{
+        try {
 
             rs.previous();
- int id=rs.getInt("ID");
-        String code=rs.getString("batchcode");
-      String name=rs.getString("StudentName");
-      int rol=rs.getInt("ROllno");
-      String sec1=rs.getString("Section");
-      int f=rs.getInt("Class");
-      btchcode.setText(code);
-      class1.setText(name);
-      rollno.setText(""+rol);
-      sec.setText(sec1);
-      sname.setText(name);
-      class1.setText(""+f);
-            
+            int id = rs.getInt("ID");
+            String code = rs.getString("batchcode");
+            String name = rs.getString("StudentName");
+            int rol = rs.getInt("ROllno");
+            String sec1 = rs.getString("Section");
+            int f = rs.getInt("Class");
+            btchcode.setText(code);
+            class1.setText(name);
+            rollno.setText("" + rol);
+            sec.setText(sec1);
+            sname.setText(name);
+            class1.setText("" + f);
 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }      
         // TODO add your handling code here:
     }//GEN-LAST:event_prvsActionPerformed
 
     private void nxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nxtActionPerformed
-      try{
-          rs.next();
-          int id=rs.getInt("ID");
-        String code=rs.getString("batchcode");
-      String name=rs.getString("StudentName");
-      int rol=rs.getInt("ROllno");
-      String sec1=rs.getString("Section");
-      int f=rs.getInt("Class");
-      btchcode.setText(code);
-      class1.setText(name);
-      rollno.setText(""+rol);
-      sec.setText(sec1);
-      sname.setText(name);
-      class1.setText(""+f);
-                  
-      }
-      catch(Exception e)
-      {
-          JOptionPane.showMessageDialog(null, e.getMessage());
-      }
+        try {
+            rs.next();
+            int id = rs.getInt("ID");
+            String code = rs.getString("batchcode");
+            String name = rs.getString("StudentName");
+            int rol = rs.getInt("ROllno");
+            String sec1 = rs.getString("Section");
+            int f = rs.getInt("Class");
+            btchcode.setText(code);
+            class1.setText(name);
+            rollno.setText("" + rol);
+            sec.setText(sec1);
+            sname.setText(name);
+            class1.setText("" + f);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }//GEN-LAST:event_nxtActionPerformed
 
     private void lastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastActionPerformed
- try{
+        try {
 
             rs.last();
- int id=rs.getInt("ID");
-        String code=rs.getString("batchcode");
-      String name=rs.getString("StudentName");
-      int rol=rs.getInt("ROllno");
-      String sec1=rs.getString("Section");
-      int f=rs.getInt("Class");
-      btchcode.setText(code);
-      class1.setText(name);
-      rollno.setText(""+rol);
-      sec.setText(sec1);
-      sname.setText(name);
-      class1.setText(""+f);
+            int id = rs.getInt("ID");
+            String code = rs.getString("batchcode");
+            String name = rs.getString("StudentName");
+            int rol = rs.getInt("ROllno");
+            String sec1 = rs.getString("Section");
+            int f = rs.getInt("Class");
+            btchcode.setText(code);
+            class1.setText(name);
+            rollno.setText("" + rol);
+            sec.setText(sec1);
+            sname.setText(name);
+            class1.setText("" + f);
 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }         
         // TODO add your handling code here:
     }//GEN-LAST:event_lastActionPerformed
 
     private void DataSrchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DataSrchActionPerformed
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_DataSrchActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
 
-        if(btchcode.getText().equals(""))
-{
-  JOptionPane.showMessageDialog(null,"Please type Id");
-} 
-else{
-    try{
+        if (btchcode.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Please type Id");
+        } else {
+            try {
 
-            String code=btchcode.getText();
-            String name=sname.getText();
-            int a=Integer.parseInt(rollno.getText());
-            String sec1=sec.getText();
-            int s=Integer.parseInt(class1.getText());
-            String q="Update studentrgstr set StudentName='"+name+"',Rollno="+a+",Section='"+sec1+"',Class="+s+" where batchcode='"+code+"';";
-            System.out.println(q);
-            stmt.executeUpdate(q);
-            JOptionPane.showMessageDialog(null,"Updated");
+                String code = btchcode.getText();
+                String name = sname.getText();
+                int a = Integer.parseInt(rollno.getText());
+                String sec1 = sec.getText();
+                int s = Integer.parseInt(class1.getText());
+                String q = "Update studentrgstr set StudentName='" + name + "',Rollno=" + a + ",Section='" + sec1 + "',Class=" + s + " where batchcode='" + code + "';";
+                System.out.println(q);
+                stmt.executeUpdate(q);
+                JOptionPane.showMessageDialog(null, "Updated");
 
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
-}        
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void class1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_class1KeyPressed
@@ -493,7 +496,7 @@ else{
     }//GEN-LAST:event_rollnoFocusLost
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-        MainPage mn=new MainPage();
+        MainPage mn = new MainPage();
         mn.setVisible(true);
         this.dispose();
         // TODO add your handling code here:
@@ -512,43 +515,48 @@ else{
     }//GEN-LAST:event_btchcodeFocusLost
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-try{
-    
-    Class.forName("java.sql.Driver");
-    con=DriverManager.getConnection("jdbc:mysql://localhost/jatin", "root", "1234");
-    stmt=con.createStatement();
-    String q="Select * from studentrgstr;";
-    rs=stmt.executeQuery(q);
-    
-    if(rs.first()==true);{
-        int id=rs.getInt("ID");
-        String code=rs.getString("batchcode");
-      String name=rs.getString("StudentName");
-      int rol=rs.getInt("ROllno");
-      String sec1=rs.getString("Section");
-      int f=rs.getInt("Class");
-      btchcode.setText(code);
-      class1.setText(name);
-      rollno.setText(""+rol);
-      sec.setText(sec1);
-      sname.setText(name);
-      class1.setText(""+f);
-      
-       
-}
-    if(rs.first()==false)
-    {
-        JOptionPane.showMessageDialog(null,"There are no records in the database for Updation");
-        BatchRegistration bn=new BatchRegistration();
-        bn.setVisible(true);
-        this.dispose();
-    }
-    
-}
-catch(Exception e)
-{
-    JOptionPane.showMessageDialog(null,e.getMessage());
-}
+        try {
+
+            Class.forName("java.sql.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/jatin", "root", "1234");
+            stmt = con.createStatement();
+            String q = "Select * from studentrgstr;";
+            rs = stmt.executeQuery(q);
+            try {
+                if (rs.first() == true);
+                {
+                    int id = rs.getInt("ID");
+                    String code = rs.getString("batchcode");
+                    String name = rs.getString("StudentName");
+                    int rol = rs.getInt("ROllno");
+                    String sec1 = rs.getString("Section");
+                    int f = rs.getInt("Class");
+                    btchcode.setText(code);
+                    class1.setText(name);
+                    rollno.setText("" + rol);
+                    sec.setText(sec1);
+                    sname.setText(name);
+                    class1.setText("" + f);
+
+                }
+                if (rs.first() == false) {
+                    JOptionPane.showMessageDialog(null, "There are no records in the table for Updation");
+                    BatchRegistration bn = new BatchRegistration();
+                    bn.setVisible(true);
+                    this.dispose();
+                }
+            }
+            catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        } 
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "There are no records in the table to update");
+            this.dispose();
+            StudentRegistration s = new StudentRegistration();
+            s.setVisible(true);
+            s.setLocationRelativeTo(null);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
 
@@ -569,34 +577,44 @@ catch(Exception e)
     }//GEN-LAST:event_snameKeyPressed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-try{int cnfrm=JOptionPane.showConfirmDialog(null,"Are You sure you want to delete this student info?.");
-if(cnfrm==JOptionPane.YES_OPTION){
-            Class.forName("java.sql.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost/jatin","root","1234");
-            stmt=con.createStatement();
-            String a=btchcode.getText();
-            int b=Integer.parseInt(rollno.getText());
-            String c=sec.getText();
-            String d=class1.getText();
-            String sql="Delete from studentrgstr where Rollno="+b+" and BatchCode='"+a+"' and  Section='"+c+"' and Class="+d+";";
-            stmt.executeUpdate(sql);
-            JOptionPane.showMessageDialog(null,"Student Deleted");
-}
-else if(cnfrm==JOptionPane.NO_OPTION)
-{
-   JOptionPane.showMessageDialog(null,"You pressed NO"); 
-}
-else
-{
-   JOptionPane.showMessageDialog(null,"You pressed Cancel"); 
-}
-}
-catch(Exception e)
-{
-   JOptionPane.showMessageDialog(null,e.getMessage()); 
-}
+        try {
+            int cnfrm = JOptionPane.showConfirmDialog(null, "Are You sure you want to delete this student info?.");
+            if (cnfrm == JOptionPane.YES_OPTION) {
+                Class.forName("java.sql.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/jatin", "root", "1234");
+                stmt = con.createStatement();
+                String a = btchcode.getText();
+                int b = Integer.parseInt(rollno.getText());
+                String c = sec.getText();
+                String d = class1.getText();
+                String sql = "Delete from studentrgstr where Rollno=" + b + " and BatchCode='" + a + "' and  Section='" + c + "' and Class=" + d + ";";
+                stmt.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Student Deleted");
+            } else if (cnfrm == JOptionPane.NO_OPTION) {
+                JOptionPane.showMessageDialog(null, "You pressed NO");
+            } else {
+                JOptionPane.showMessageDialog(null, "You pressed Cancel");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_DeleteActionPerformed
+
+    private void DELETEALLSTUDENTSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DELETEALLSTUDENTSActionPerformed
+        try {
+            String sql = "Delete from studentrgstr;";
+            stmt.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Students Deleted");
+            System.out.println(sql);
+            this.dispose();
+            MainPage mn = new MainPage();
+            mn.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DELETEALLSTUDENTSActionPerformed
 
     /**
      * @param args the command line arguments
@@ -634,6 +652,7 @@ catch(Exception e)
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DELETEALLSTUDENTS;
     private javax.swing.JButton DataSrch;
     private javax.swing.JButton Delete;
     private javax.swing.JButton Update;

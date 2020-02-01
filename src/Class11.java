@@ -394,7 +394,7 @@ c2.requestFocus();
                     countoffinal=countof+countoffinal;
                 }
                 System.out.println(countoffinal);
-                for(int i=3;i<=daycount;i++)
+                for(int i=1;i<=daycount;i++)
                 {
                     String sql="Select count(*) from "+m+"M where StudentName='"+Name1+"' and "+i+"d=1;";
                     rs=stmt.executeQuery(sql);
@@ -403,7 +403,7 @@ c2.requestFocus();
                     countoffinal1=countof1+countoffinal1;
                 }
                 System.out.println(countoffinal1);
-                for(int i=3;i<=daycount;i++)
+                for(int i=1;i<=daycount;i++)
                 {
                     String sql="Select count(*) from "+m+"M where StudentName='"+Name1+"' and "+i+"d=0;";
                     rs=stmt.executeQuery(sql);
