@@ -364,11 +364,21 @@ try{
  stmt=con.createStatement();
  String sql="Select * from batchrgstr;";
  rs=stmt.executeQuery(sql);
- while(rs.next())
+    
+ if(rs.next()==true)
+ {while(rs.next())
  {
     int a=rs.getInt(7);
     c1.addItem(""+a);  
  }
+ }
+ else{
+     JOptionPane.showMessageDialog(null,"There no batches registered yet. Add a batch by clicking on the Batch Registration button on the Main Page.");
+     MainPage mn=new MainPage();
+     mn.setVisible(true);
+     this.dispose();
+ }
+ 
 int b=Integer.parseInt(c1.getSelectedItem().toString());
 String sq="Select batchcode from batchrgstr where ID="+b+";";
 rs=stmt.executeQuery(sq);

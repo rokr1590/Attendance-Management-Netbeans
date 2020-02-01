@@ -479,7 +479,7 @@ this.dispose();
             }
             else if (stream.equals("")) 
             {
-                JOptionPane.showMessageDialog(null, "Enter Stream");
+                stream="N/A";
             }
             else if (sec.equals("")) 
             {

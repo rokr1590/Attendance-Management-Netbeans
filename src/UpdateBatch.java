@@ -423,7 +423,7 @@ try{
     String q="Select * from batchrgstr;";
     rs=stmt.executeQuery(q);
     
-    if(rs.first()==true);{
+    if(rs.first()==true){
         int id=rs.getInt(7);
         String code=rs.getString(1);
         int year=rs.getInt(2);
@@ -439,7 +439,7 @@ try{
        btchstream.setText(stream);
        btchsec.setText(section);
 }
-    if(rs.first()==false)
+else if(rs.first()==false)
     {
         JOptionPane.showMessageDialog(null,"There are no records in the database for Updation");
         BatchRegistration bn=new BatchRegistration();

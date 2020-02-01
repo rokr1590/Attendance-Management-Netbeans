@@ -523,7 +523,7 @@ public class UpdateStudent extends javax.swing.JFrame {
             String q = "Select * from studentrgstr;";
             rs = stmt.executeQuery(q);
             try {
-                if (rs.first() == true);
+                if (rs.first() == true)
                 {
                     int id = rs.getInt("ID");
                     String code = rs.getString("batchcode");
@@ -539,7 +539,7 @@ public class UpdateStudent extends javax.swing.JFrame {
                     class1.setText("" + f);
 
                 }
-                if (rs.first() == false) {
+                else if (rs.first() == false) {
                     JOptionPane.showMessageDialog(null, "There are no records in the table for Updation");
                     BatchRegistration bn = new BatchRegistration();
                     bn.setVisible(true);
